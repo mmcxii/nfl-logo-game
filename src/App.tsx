@@ -1,10 +1,18 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import Normalize from 'react-normalize';
+
+import { Footer, Game, Header } from 'Layout';
 
 const App: React.FC = () => {
   return (
     <>
+      <Normalize />
       <GlobalStyles />
+
+      <Header />
+      <Game />
+      <Footer />
     </>
   );
 };
@@ -21,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   body,
   html,
   #root {
-    height:100vh
+    min-height:100vh
   }
 
   #root {
