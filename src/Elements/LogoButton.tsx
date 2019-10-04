@@ -16,6 +16,7 @@ export const LogoButton = styled.button<{ primaryColor: string; secondaryColor: 
   border-radius: ${rounded.outter};
   font-weight: bolder;
   text-transform: capitalize;
+  max-width: 250px;
 
   color: ${props => props.textColor};
   background: ${props => props.primaryColor};
@@ -23,11 +24,13 @@ export const LogoButton = styled.button<{ primaryColor: string; secondaryColor: 
   transition: transform ease-in 250ms;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   > img {
     border-radius: ${rounded.inner};
+    padding: ${spacing.xs};
+    background: #fff;
     margin-bottom: ${spacing.sm};
   }
 `;

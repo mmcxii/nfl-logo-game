@@ -3,11 +3,11 @@ import React, { createContext, useReducer } from 'react';
 interface StateProps {
   lives: number;
   numCorrect: number;
-  currentAnswer: string;
   usedAnswers: string[];
+  unusedAnswers: string[];
 }
 
-type ActionTypes = 'SET_NEW_ANSWER' | 'INCORRECT_GUESS' | 'CORRECT_GUESS';
+type ActionTypes = 'RESET_GAME' | 'INCORRECT_GUESS' | 'CORRECT_GUESS';
 
 interface ActionProps {
   type: ActionTypes;
@@ -15,21 +15,58 @@ interface ActionProps {
 }
 
 const initialState: StateProps = {
-  lives: 5,
+  lives: 3,
   numCorrect: 0,
-  currentAnswer: '',
   usedAnswers: [],
+  unusedAnswers: [
+    'AZ',
+    'ATL',
+    'BAL',
+    'BUF',
+    'CAR',
+    'CHI',
+    'CIN',
+    'CLE',
+    'DAL',
+    'DEN',
+    'DET',
+    'GB',
+    'HOU',
+    'IND',
+    'JAC',
+    'KC',
+    'LAC',
+    'LAR',
+    'MIA',
+    'MIN',
+    'NE',
+    'NO',
+    'NYG',
+    'NYJ',
+    'OAK',
+    'PHI',
+    'PIT',
+    'SF',
+    'SEA',
+    'TB',
+    'TEN',
+    'WAS',
+  ],
 };
 
 export const Store = createContext<StateProps | any>(initialState);
 
 const reducer = (state: StateProps, action: ActionProps): StateProps => {
   switch (action.type) {
-    case 'SET_NEW_ANSWER':
-      return { ...state, currentAnswer: action.payload };
+    case 'RESET_GAME':
+      return { ...initialState };
 
     case 'CORRECT_GUESS':
-      return { ...state, numCorrect: state.numCorrect + 1 };
+      return {
+        ...state,
+        usedAnswers: [...state.usedAnswers, action.payload],
+        numCorrect: state.numCorrect + 1,
+      };
 
     case 'INCORRECT_GUESS':
       return { ...state, lives: state.lives - 1 };

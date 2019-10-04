@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import Normalize from 'react-normalize';
 
 import { Footer, Game, Header } from 'Layout';
+import bg from './Images/bg.jpg';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,8 @@ const App: React.FC = () => {
 export default App;
 
 const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap');
+
   * {
     padding: 0;
     margin: 0;
@@ -35,5 +38,11 @@ const GlobalStyles = createGlobalStyle`
   #root {
     display: flex;
     flex-direction: column;
+    background: url(${bg}) no-repeat;
+    background-size: cover;
+    background-position: fixed;
+
+    font-family: Be Vietnam
+    
   }
 `;

@@ -185,7 +185,7 @@ export const teams: TeamProps[] = [
     name: 'kansas city chiefs',
     abbreviation: 'KC',
     logo: KC,
-    textColor: '#000',
+    textColor: '#FFF',
     primaryColor: '#E31837',
     secondaryColor: '#FFB81C',
     accentColor: '#FFFFFF',

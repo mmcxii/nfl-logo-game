@@ -10,6 +10,8 @@ interface Props {}
 const Game: React.FC<Props> = () => {
   const { state, dispatch } = useContext(Store);
 
+  const handleClick = (team: string) => {};
+
   return (
     <Wrapper>
       <Teams>
@@ -19,8 +21,9 @@ const Game: React.FC<Props> = () => {
             primaryColor={team.primaryColor}
             secondaryColor={team.secondaryColor}
             textColor={team.textColor}
+            onClick={() => handleClick(team.abbreviation)}
           >
-            <img src={team.logo} />
+            <img src={team.logo} alt={team.name} />
 
             <h3>{team.name}</h3>
           </LogoButton>
@@ -38,4 +41,8 @@ const Teams = styled(Container).attrs({ as: 'section' })`
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
