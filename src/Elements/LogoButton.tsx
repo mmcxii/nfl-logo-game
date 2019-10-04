@@ -11,12 +11,12 @@ export const LogoButton = styled.button<{ primaryColor: string; secondaryColor: 
   justify-content: center;
   align-items: center;
 
+  width: 100%;
   padding: ${spacing.sm} ${spacing.md};
   margin: ${spacing.md};
   border-radius: ${rounded.outter};
   font-weight: bolder;
   text-transform: capitalize;
-  max-width: 250px;
 
   color: ${props => props.textColor};
   background: ${props => props.primaryColor};

@@ -65,6 +65,7 @@ const reducer = (state: StateProps, action: ActionProps): StateProps => {
       return {
         ...state,
         usedAnswers: [...state.usedAnswers, action.payload],
+        unusedAnswers: state.unusedAnswers.filter(team => team !== action.payload),
         numCorrect: state.numCorrect + 1,
       };
 
