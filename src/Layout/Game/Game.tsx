@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
 
 import { Store } from 'Store';
+import { spacing } from 'Utilities';
 import { teams, LogoButton } from 'Elements';
 import Container from '../Container';
+import InfoBanner from './InfoBanner';
 
 interface Props {}
 
@@ -24,7 +26,7 @@ const Game: React.FC<Props> = () => {
 
     // If the player loses their last life reset the game
     if (state.lives === 1) {
-      return dispatch({ type: 'RESET_GAME' });
+      return dispatch({ type: 'LOST_GAME' });
     }
 
     // If the guess is wrong and the player still has remaining lives, decrement lives
@@ -33,9 +35,11 @@ const Game: React.FC<Props> = () => {
 
   return (
     <Wrapper>
+      <InfoBanner />
+
       <Teams>
         {teams.map(team => (
-          <Overdrive id={team.abbreviation} key={team.name} style={{ maxWidth: '250px' }} element='article'>
+          <TeamWrapper id={team.abbreviation} key={team.name}>
             <LogoButton
               primaryColor={team.primaryColor}
               secondaryColor={team.secondaryColor}
@@ -46,7 +50,7 @@ const Game: React.FC<Props> = () => {
 
               <h3>{team.name}</h3>
             </LogoButton>
-          </Overdrive>
+          </TeamWrapper>
         ))}
       </Teams>
     </Wrapper>
@@ -63,6 +67,14 @@ const Teams = styled(Container).attrs({ as: 'section' })`
   justify-content: center;
 
   @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
     grid-template-columns: repeat(4, 1fr);
   }
+`;
+
+const TeamWrapper = styled(Overdrive).attrs({ element: 'article' })`
+  margin: ${spacing.md};
 `;

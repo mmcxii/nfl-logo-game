@@ -13,7 +13,6 @@ export const LogoButton = styled.button<{ primaryColor: string; secondaryColor: 
 
   width: 100%;
   padding: ${spacing.sm} ${spacing.md};
-  margin: ${spacing.md};
   border-radius: ${rounded.outter};
   font-weight: bolder;
   text-transform: capitalize;
@@ -32,5 +31,9 @@ export const LogoButton = styled.button<{ primaryColor: string; secondaryColor: 
     padding: ${spacing.xs};
     background: #fff;
     margin-bottom: ${spacing.sm};
+  }
+
+  > h3 {
+    font-size: 1rem;
   }
 `;

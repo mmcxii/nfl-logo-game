@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import Normalize from 'react-normalize';
 
 import { Footer, Game, Header } from 'Layout';
-import bg from './Images/bg.jpg';
+import bg from 'Images/bg.jpg';
 
 const App: React.FC = () => {
   return (
